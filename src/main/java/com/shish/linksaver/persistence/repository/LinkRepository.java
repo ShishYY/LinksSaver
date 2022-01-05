@@ -8,5 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface LinkRepository extends CrudRepository<LinkEntity,Long> {
-         LinkEntity deleteLinkEntityByCategoryAndUserEntityIdAndUrl (CategoryEntity category, UserEntity user,String Url);
+    //почему тут нужен Integer ?
+         Integer deleteLinkEntityByCategoryAndUserEntityIdAndUrl (CategoryEntity category, UserEntity user,String Url);
 }

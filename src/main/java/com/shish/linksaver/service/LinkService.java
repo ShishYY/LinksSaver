@@ -2,6 +2,7 @@ package com.shish.linksaver.service;
 
 import com.shish.linksaver.exeptions.LinkAddExeption;
 import com.shish.linksaver.model.LinkDTO;
+import com.shish.linksaver.model.ResponseDTO;
 import com.shish.linksaver.persistence.entity.CategoryEntity;
 import com.shish.linksaver.persistence.entity.LinkEntity;
 import com.shish.linksaver.persistence.entity.UserEntity;
@@ -34,13 +35,16 @@ public class LinkService {
         linkRepository.save(linkEntity);
     }
 
-    public void deleteLink(LinkDTO link){
+    public ResponseDTO deleteLink(LinkDTO link) throws RuntimeException{
         CategoryEntity category = categoryRepository.findCategoryEntityByCategoryHeading
                 (link.getLinkCategory()).get();
 
         UserEntity user = userRepository.findByEmail(link.getEmail());
 
-        linkRepository.deleteLinkEntityByCategoryAndUserEntityIdAndUrl(category,user,link.getLinkUrl());
-
+       Integer isDelet =  linkRepository.deleteLinkEntityByCategoryAndUserEntityIdAndUrl(category,user,link.getLinkUrl());
+       if (isDelet > 0 ){
+          return new ResponseDTO("Сылка удалена");
+       }
+       throw new RuntimeException("Что то пошло не так");
     }
 }

@@ -2,6 +2,7 @@ package com.shish.linksaver.controler;
 
 import com.shish.linksaver.exeptions.LinkAddExeption;
 import com.shish.linksaver.model.LinkDTO;
+import com.shish.linksaver.model.ResponseDTO;
 import com.shish.linksaver.model.UserLinksDTO;
 import com.shish.linksaver.service.LinkService;
 import org.springframework.http.MediaType;
@@ -24,8 +25,8 @@ public class LinkRestController   {
     }
 
     @PostMapping(value = "/deletelink",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteLink(@RequestBody() LinkDTO linkDelete){
-        linkService.deleteLink(linkDelete);
+    public ResponseDTO deleteLink(@RequestBody() LinkDTO linkDelete){
+       return linkService.deleteLink(linkDelete);
     }
 
     @PostMapping(value = "/userlinks",consumes = MediaType.APPLICATION_JSON_VALUE)

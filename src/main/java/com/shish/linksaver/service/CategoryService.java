@@ -6,6 +6,8 @@ import com.shish.linksaver.persistence.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CategoryService {
@@ -17,7 +19,11 @@ public class CategoryService {
     }
 
     public void addcategory(CategoryDTO category){
+        List<CategoryEntity> AllCategoryList = categoryRepository.findAll();
+        boolean isExistCategory =
+       // if(isExistCategory){
 
+        }
         CategoryEntity categorytemp = new CategoryEntity();
 
         categorytemp.setCategoryHeading(category.getCategory());
