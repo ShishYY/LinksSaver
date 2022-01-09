@@ -2,23 +2,32 @@ package com.shish.linksaver.model;
 
 public class CategoryDTO {
 
-    private String userEmail;
+    private String email;
 
-    private String category;
+    private String linkCategory;
 
-    public String getUserEmail() {
-        return userEmail;
+    public CategoryDTO() {
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public CategoryDTO(String email, String linkCategory) {
+        this.email = email;
+        this.linkCategory = linkCategory;
     }
 
-    public String getCategory() {
-        return category;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLinkCategory() {
+        return linkCategory;
+    }
+
+    public void setLinkCategory(String linkCategory) {
+        this.linkCategory = linkCategory;
     }
 }

@@ -10,6 +10,7 @@ import com.shish.linksaver.persistence.repository.CategoryRepository;
 import com.shish.linksaver.persistence.repository.LinkRepository;
 import com.shish.linksaver.persistence.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 
 @Service
@@ -35,16 +36,16 @@ public class LinkService {
         linkRepository.save(linkEntity);
     }
 
-    public ResponseDTO deleteLink(LinkDTO link) throws RuntimeException{
+    public ResponseDTO deleteLink(LinkDTO link) throws RuntimeException {
         CategoryEntity category = categoryRepository.findCategoryEntityByCategoryHeading
                 (link.getLinkCategory()).get();
 
         UserEntity user = userRepository.findByEmail(link.getEmail());
 
-       Integer isDelet =  linkRepository.deleteLinkEntityByCategoryAndUserEntityIdAndUrl(category,user,link.getLinkUrl());
-       if (isDelet > 0 ){
-          return new ResponseDTO("Сылка удалена");
-       }
-       throw new RuntimeException("Что то пошло не так");
+        Integer isDelet = linkRepository.deleteLinkEntityByCategoryAndUserEntityIdAndUrl(category, user, link.getLinkUrl());
+        if (isDelet > 0) {
+            return new ResponseDTO("Link deleted");
+        }
+        throw new RuntimeException("Something went wrong");
     }
 }

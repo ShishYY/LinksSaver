@@ -7,7 +7,7 @@ public class UserLinksDTO {
 
     private String user;
 
-    private List <LinkDTO> links;
+    private List<LinkDTO> links;
 
     public UserLinksDTO() {
     }

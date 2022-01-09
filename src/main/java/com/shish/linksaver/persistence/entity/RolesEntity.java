@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "roles")
+@Table(name = "roles")
 
-public class RolesEntity extends AbstractEntity{
+public class RolesEntity extends AbstractEntity {
 
 
     @Column(name = "roleName")

@@ -5,24 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "user",schema = "public")
+@Table(name = "user", schema = "public")
 
 public class UserEntity extends AbstractEntity {
 
+    @OneToMany(mappedBy = "userEntityId", fetch = FetchType.LAZY)
+    private final List<LinkEntity> linkEntityList = new ArrayList<>();
     @Column(name = "login")
     private String login;
-
     @Column(name = "name")
     private String userName;
-
     @Column(name = "email")
     private String email;
-
     @Column(name = "password")
     private String password;
-
-    @OneToMany(mappedBy = "userEntityId",fetch = FetchType.LAZY)
-    private List<LinkEntity> linkEntityList = new ArrayList<>();
 
 
     public UserEntity(String login, String userName, String email, String password) {
