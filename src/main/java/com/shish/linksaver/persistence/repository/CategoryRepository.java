@@ -14,4 +14,6 @@ public interface CategoryRepository extends CrudRepository<CategoryEntity, Long>
 
     List<CategoryEntity> findCategoryEntityByUserId(UserEntity user);
 
+    CategoryEntity findCategoryEntityByCategoryHeadingAndAndUserId(String category,UserEntity user);
+
 }

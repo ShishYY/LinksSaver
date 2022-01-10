@@ -43,9 +43,9 @@ public class CategoryService {
     }
 
     public ResponseDTO deleteCategory (CategoryDTO category){
-
-        CategoryEntity tempCategorydelete = categoryRepository.findCategoryEntityByCategoryHeading(category.getLinkCategory());
-        if (tempCategorydelete.getId() != null){
+        UserEntity user = userRepository.findByEmail(category.getEmail());
+        CategoryEntity tempCategorydelete = categoryRepository.findCategoryEntityByCategoryHeadingAndAndUserId(category.getLinkCategory(),user);
+        if (tempCategorydelete.getId() != null){ //Добавить правильную проверку на существование данной категории.Или фронт будет проверять?
         categoryRepository.deleteById(tempCategorydelete.getId());
         return new ResponseDTO("Successfully delete category");
         }
