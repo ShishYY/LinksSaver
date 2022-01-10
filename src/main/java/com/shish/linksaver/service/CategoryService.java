@@ -1,7 +1,7 @@
 package com.shish.linksaver.service;
 
-import com.shish.linksaver.model.CategoryDTO;
-import com.shish.linksaver.model.ResponseDTO;
+import com.shish.linksaver.model.dto.CategoryDto;
+import com.shish.linksaver.model.dto.ResponseDto;
 import com.shish.linksaver.persistence.entity.CategoryEntity;
 import com.shish.linksaver.persistence.entity.UserEntity;
 import com.shish.linksaver.persistence.repository.CategoryRepository;
@@ -24,7 +24,7 @@ public class CategoryService {
         this.userRepository = userRepository;
     }
 
-    public ResponseDTO addCategory (CategoryDTO category) {
+    public ResponseDto addCategory (CategoryDto category) {
 
         UserEntity user = userRepository.findByEmail(category.getEmail());
         List<CategoryEntity> userCategoryList = categoryRepository.findCategoryEntityByUserId(user);
@@ -39,15 +39,15 @@ public class CategoryService {
             throw new RuntimeException("This category already exists");
         }
         categoryRepository.save(new CategoryEntity(category.getLinkCategory(), user));
-        return new ResponseDTO("Category successfully added");
+        return new ResponseDto("Category successfully added");
     }
 
-    public ResponseDTO deleteCategory (CategoryDTO category){
+    public ResponseDto deleteCategory (CategoryDto category){
         UserEntity user = userRepository.findByEmail(category.getEmail());
         CategoryEntity tempCategorydelete = categoryRepository.findCategoryEntityByCategoryHeadingAndAndUserId(category.getLinkCategory(),user);
-        if (tempCategorydelete.getId() != null){ //Добавить правильную проверку на существование данной категории.Или фронт будет проверять?
+        if (tempCategorydelete.getId() != null) { //Добавить правильную проверку на существование данной категории.Или фронт будет проверять?
         categoryRepository.deleteById(tempCategorydelete.getId());
-        return new ResponseDTO("Successfully delete category");
+        return new ResponseDto("Successfully delete category");
         }
         throw new RuntimeException("Dont have this category");
     }

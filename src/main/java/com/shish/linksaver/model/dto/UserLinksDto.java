@@ -1,18 +1,17 @@
-package com.shish.linksaver.model;
+package com.shish.linksaver.model.dto;
 
 import java.util.List;
-import java.util.Map;
 
-public class UserLinksDTO {
+public class UserLinksDto {
 
     private String user;
 
-    private List<LinkDTO> links;
+    private List<LinkDto> links;
 
-    public UserLinksDTO() {
+    public UserLinksDto() {
     }
 
-    public UserLinksDTO(String user, List<LinkDTO> links) {
+    public UserLinksDto(String user, List<LinkDto> links) {
         this.user = user;
         this.links = links;
     }
@@ -25,11 +24,11 @@ public class UserLinksDTO {
         this.user = user;
     }
 
-    public List<LinkDTO> getLinks() {
+    public List<LinkDto> getLinks() {
         return links;
     }
 
-    public void setLinks(List<LinkDTO> links) {
+    public void setLinks(List<LinkDto> links) {
         this.links = links;
     }
 }

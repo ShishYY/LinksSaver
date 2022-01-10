@@ -1,15 +1,15 @@
-package com.shish.linksaver.model;
+package com.shish.linksaver.model.dto;
 
-public class CategoryDTO {
+public class CategoryDto {
 
     private String email;
 
     private String linkCategory;
 
-    public CategoryDTO() {
+    public CategoryDto() {
     }
 
-    public CategoryDTO(String email, String linkCategory) {
+    public CategoryDto(String email, String linkCategory) {
         this.email = email;
         this.linkCategory = linkCategory;
     }

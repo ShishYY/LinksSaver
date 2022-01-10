@@ -1,8 +1,8 @@
 package com.shish.linksaver.service;
 
 import com.shish.linksaver.exeptions.LinkAddExeption;
-import com.shish.linksaver.model.LinkDTO;
-import com.shish.linksaver.model.ResponseDTO;
+import com.shish.linksaver.model.dto.LinkDto;
+import com.shish.linksaver.model.dto.ResponseDto;
 import com.shish.linksaver.persistence.entity.CategoryEntity;
 import com.shish.linksaver.persistence.entity.LinkEntity;
 import com.shish.linksaver.persistence.entity.UserEntity;
@@ -27,7 +27,7 @@ public class LinkService {
         this.categoryRepository = categoryRepository;
     }
 
-    public void addLink(LinkDTO link) throws LinkAddExeption {
+    public void addLink(LinkDto link) throws LinkAddExeption {
         LinkEntity linkEntity = new LinkEntity();
         categoryRepository.findCategoryEntityByCategoryHeading(link.getLinkCategory());
         linkEntity.setUserEntityId(userRepository.findByEmail(link.getEmail()));
@@ -36,7 +36,7 @@ public class LinkService {
         linkRepository.save(linkEntity);
     }
 
-    public ResponseDTO deleteLink(LinkDTO link) throws RuntimeException {
+    public ResponseDto deleteLink(LinkDto link) throws RuntimeException {
         CategoryEntity category = categoryRepository.findCategoryEntityByCategoryHeading
                 (link.getLinkCategory());
 
@@ -44,7 +44,7 @@ public class LinkService {
 
         Integer isDelet = linkRepository.deleteLinkEntityByCategoryAndUserEntityIdAndUrl(category, user, link.getLinkUrl());
         if (isDelet > 0) {
-            return new ResponseDTO("Link deleted");
+            return new ResponseDto("Link deleted");
         }
         throw new RuntimeException("Something went wrong");
     }

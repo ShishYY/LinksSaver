@@ -1,10 +1,10 @@
-package com.shish.linksaver.model;
+package com.shish.linksaver.model.dto;
 
-public class ResponseDTO {
+public class ResponseDto {
 
     private String response;
 
-    public ResponseDTO(String response) {
+    public ResponseDto(String response) {
         this.response = response;
     }
 

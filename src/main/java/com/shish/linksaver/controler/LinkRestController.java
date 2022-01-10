@@ -1,10 +1,10 @@
 package com.shish.linksaver.controler;
 
 import com.shish.linksaver.exeptions.LinkAddExeption;
-import com.shish.linksaver.model.CategoryDTO;
-import com.shish.linksaver.model.LinkDTO;
-import com.shish.linksaver.model.ResponseDTO;
-import com.shish.linksaver.model.UserLinksDTO;
+import com.shish.linksaver.model.dto.CategoryDto;
+import com.shish.linksaver.model.dto.LinkDto;
+import com.shish.linksaver.model.dto.ResponseDto;
+import com.shish.linksaver.model.dto.UserLinksDto;
 import com.shish.linksaver.service.CategoryService;
 import com.shish.linksaver.service.LinkService;
 import org.springframework.http.MediaType;
@@ -25,17 +25,17 @@ public class LinkRestController {
     }
 
     @PostMapping(value = "/savelink", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addLink(@RequestBody() LinkDTO link) throws LinkAddExeption {
+    public void addLink(@RequestBody() LinkDto link) throws LinkAddExeption {
         linkService.addLink(link);
     }
 
     @PostMapping(value = "/deletelink", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseDTO deleteLink(@RequestBody() LinkDTO linkDelete) {
+    public ResponseDto deleteLink(@RequestBody() LinkDto linkDelete) {
         return linkService.deleteLink(linkDelete);
     }
 
     @PostMapping(value = "/userlinks", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UserLinksDTO getUserLink() {
+    public UserLinksDto getUserLink() {
         return null;
     }
 
@@ -45,11 +45,11 @@ public class LinkRestController {
     }
 
     @PostMapping(value = "/addcategory", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseDTO addCategory(@RequestBody() CategoryDTO categoryDTO) {
+    public ResponseDto addCategory(@RequestBody() CategoryDto categoryDTO) {
         return categoryService.addCategory(categoryDTO);
     }
     @PostMapping(value = "/deletedcategory",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseDTO deleteCategory(@RequestBody() CategoryDTO categoryDTO){
+    public ResponseDto deleteCategory(@RequestBody() CategoryDto categoryDTO){
         return categoryService.deleteCategory(categoryDTO);
     }
 
