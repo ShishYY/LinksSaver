@@ -39,14 +39,18 @@ public class LinkRestController {
         return null;
     }
 
-    @PostMapping(value = "/getcategiry", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/getcategory", consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<String> getUserCategory() {
         return null;
     }
 
     @PostMapping(value = "/addcategory", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseDTO addCategory(@RequestBody() CategoryDTO categoryDTO) {
-        return categoryService.addcategory(categoryDTO);
+        return categoryService.addCategory(categoryDTO);
+    }
+    @PostMapping(value = "/deletedcategory",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseDTO deleteCategory(@RequestBody() CategoryDTO categoryDTO){
+        return categoryService.deleteCategory(categoryDTO);
     }
 
 }

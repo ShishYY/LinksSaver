@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface CategoryRepository extends CrudRepository<CategoryEntity, Long> {
 
-    Optional<CategoryEntity> findCategoryEntityByCategoryHeading(String category);
+    CategoryEntity findCategoryEntityByCategoryHeading(String category);
 
     List<CategoryEntity> findCategoryEntityByUserId(UserEntity user);
 

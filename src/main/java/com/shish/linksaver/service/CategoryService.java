@@ -24,7 +24,7 @@ public class CategoryService {
         this.userRepository = userRepository;
     }
 
-    public ResponseDTO addcategory(CategoryDTO category) {
+    public ResponseDTO addCategory (CategoryDTO category) {
 
         UserEntity user = userRepository.findByEmail(category.getEmail());
         List<CategoryEntity> userCategoryList = categoryRepository.findCategoryEntityByUserId(user);
@@ -40,6 +40,16 @@ public class CategoryService {
         }
         categoryRepository.save(new CategoryEntity(category.getLinkCategory(), user));
         return new ResponseDTO("Category successfully added");
+    }
+
+    public ResponseDTO deleteCategory (CategoryDTO category){
+
+        CategoryEntity tempCategorydelete = categoryRepository.findCategoryEntityByCategoryHeading(category.getLinkCategory());
+        if (tempCategorydelete.getId() != null){
+        categoryRepository.deleteById(tempCategorydelete.getId());
+        return new ResponseDTO("Successfully delete category");
+        }
+        throw new RuntimeException("Dont have this category");
     }
 }
 

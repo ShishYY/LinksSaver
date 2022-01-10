@@ -31,14 +31,14 @@ public class LinkService {
         LinkEntity linkEntity = new LinkEntity();
         categoryRepository.findCategoryEntityByCategoryHeading(link.getLinkCategory());
         linkEntity.setUserEntityId(userRepository.findByEmail(link.getEmail()));
-        linkEntity.setCategory(categoryRepository.findCategoryEntityByCategoryHeading(link.getLinkCategory()).get());
+        linkEntity.setCategory(categoryRepository.findCategoryEntityByCategoryHeading(link.getLinkCategory()));
         linkEntity.setUrl(link.getLinkUrl());
         linkRepository.save(linkEntity);
     }
 
     public ResponseDTO deleteLink(LinkDTO link) throws RuntimeException {
         CategoryEntity category = categoryRepository.findCategoryEntityByCategoryHeading
-                (link.getLinkCategory()).get();
+                (link.getLinkCategory());
 
         UserEntity user = userRepository.findByEmail(link.getEmail());
 
