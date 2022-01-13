@@ -11,14 +11,22 @@ public class UserEntity extends AbstractEntity {
 
     @OneToMany(mappedBy = "userEntityId", fetch = FetchType.LAZY)
     private final List<LinkEntity> linkEntityList = new ArrayList<>();
+
     @Column(name = "login")
     private String login;
+
     @Column(name = "name")
     private String userName;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "password")
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RolesEntity role ;
 
 
     public UserEntity(String login, String userName, String email, String password) {
