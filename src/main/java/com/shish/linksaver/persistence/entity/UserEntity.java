@@ -1,5 +1,7 @@
 package com.shish.linksaver.persistence.entity;
 
+import org.apache.catalina.User;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +11,6 @@ import java.util.List;
 
 public class UserEntity extends AbstractEntity {
 
-    @OneToMany(mappedBy = "userEntityId", fetch = FetchType.LAZY)
-    private final List<LinkEntity> linkEntityList = new ArrayList<>();
 
     @Column(name = "login")
     private String login;
@@ -80,5 +80,14 @@ public class UserEntity extends AbstractEntity {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+
+    public RolesEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RolesEntity role) {
+        this.role = role;
     }
 }

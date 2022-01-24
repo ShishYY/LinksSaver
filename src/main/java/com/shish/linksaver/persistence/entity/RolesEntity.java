@@ -10,8 +10,8 @@ import javax.persistence.Table;
 public class RolesEntity extends AbstractEntity {
 
 
-    @Column(name = "roleName")
-    private String rolename;
+    @Column(name = "role_name")
+    private String roleName;
 
     public RolesEntity() {
     }
@@ -19,15 +19,23 @@ public class RolesEntity extends AbstractEntity {
     @Override
     public String toString() {
         return "RolesEntity{" +
-                "rolename='" + rolename + '\'' +
+                "roleName='" + roleName + '\'' +
                 '}';
     }
 
     public String getRolename() {
-        return rolename;
+        return roleName;
     }
 
     public void setRolename(String rolename) {
-        this.rolename = rolename;
+        this.roleName = rolename;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

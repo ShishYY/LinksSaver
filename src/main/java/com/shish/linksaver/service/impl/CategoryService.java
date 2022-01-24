@@ -1,4 +1,4 @@
-package com.shish.linksaver.service;
+package com.shish.linksaver.service.impl;
 
 import com.shish.linksaver.model.dto.CategoryDto;
 import com.shish.linksaver.model.dto.ResponseDto;

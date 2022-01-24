@@ -5,8 +5,8 @@ import com.shish.linksaver.model.dto.CategoryDto;
 import com.shish.linksaver.model.dto.LinkDto;
 import com.shish.linksaver.model.dto.ResponseDto;
 import com.shish.linksaver.model.dto.UserLinksDto;
-import com.shish.linksaver.service.CategoryService;
-import com.shish.linksaver.service.LinkService;
+import com.shish.linksaver.service.impl.CategoryService;
+import com.shish.linksaver.service.impl.LinkService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 

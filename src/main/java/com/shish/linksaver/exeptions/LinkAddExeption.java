@@ -1,5 +1,5 @@
 package com.shish.linksaver.exeptions;
 
-public class LinkAddExeption extends Throwable{
+public class LinkAddExeption extends RuntimeException{
 
 }
