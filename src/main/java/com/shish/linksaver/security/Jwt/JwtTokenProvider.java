@@ -25,7 +25,10 @@ public class JwtTokenProvider {
 
     private UserDetailsService userDetailsService;
 
-    public JwtTokenProvider() {
+
+
+    public JwtTokenProvider(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
     }
 
     public String createToken(String username, String role) {
